@@ -1,19 +1,20 @@
 const { Cluster } =  require('puppeteer-cluster');
 
-const PAGE_REQUEST_COUNT = 100;
+const REQUEST_COUNT = 100;
+const REQUEST_PAGE = 'https://staging.marvelousdesigner.com/learn/newfeature';
 
 (async ()=> {
     console.log(`[Stress Test] Start Time : ${new Date()}`)
     const cluster = await Cluster.launch({
         concurrency: Cluster.CONCURRENCY_CONTEXT,
-        maxConcurrency: PAGE_REQUEST_COUNT
+        maxConcurrency: REQUEST_COUNT
     });
 
     await cluster.task(async ({page, data: url})=> {
         await page.goto(url);
     });
-    Array.from({length:PAGE_REQUEST_COUNT}).map(()=> {
-        cluster.queue('https://staging.marvelousdesigner.com/learn/newfeature');
+    Array.from({length:REQUEST_COUNT}).map(()=> {
+        cluster.queue(REQUEST_PAGE);
     })
 
 

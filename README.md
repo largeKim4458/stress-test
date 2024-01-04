@@ -17,4 +17,7 @@ node index.ts
 ```
 
 ## 4. 테스트 수정
-> index.js 의 `PAGE_REQUEST_COUNT` 상수 숫자를 수정하시면 됩니다.
+### 4-1. 동시 요청할 숫자
+> index.js 의 `REQUEST_COUNT` 상수 숫자를 수정하시면 됩니다.
+### 4-2. 동시 요청할 페이지
+> index.js 의 `REQUEST_PAGE` 상수 숫자를 수정하시면 됩니다.
